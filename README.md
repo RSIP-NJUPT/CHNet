@@ -6,7 +6,8 @@ This an official Pytorch implementation of our paper "Coarse-to-Fine High-Order 
 ----
 # train
 Change the parameter values ​​and data addresses in config.py.
-python train.py
+  
+  >python train.py
 
 ----
 # Datasets
