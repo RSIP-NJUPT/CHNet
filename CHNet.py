@@ -63,7 +63,7 @@ class SR(nn.Module):
         return torch.cat([ x_11+x_22, x_12+x_21 ],dim=1)
 
 
-class RSnet(nn.Module):
+class CHNet(nn.Module):
 
     def __init__(self):
 
@@ -117,12 +117,4 @@ class RSnet(nn.Module):
 
 
 
-if __name__ == '__main__':
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    net = RSnet().to(device)
-    input1 = torch.randn(64,1,30,11,11).to(device)
-    input2 = torch.randn(64,1,11,11).to(device)
-    net.load_state_dict(torch.load('cls_model\Yancheng_new.pth'))
-    # out =  net(input1,input2)
-    # print(net.state_dict().keys())
-    print("输出 out")
+

@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch.optim as optim
 from operator import truediv
 import time
-import RSnet
+import CHNet
 import geniter
 from config import opt
 
@@ -176,7 +176,7 @@ def train(train_loader, epochs):
     # 使用GPU训练，可以在菜单 "代码执行工具" -> "更改运行时类型" 里进行设置
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     # 网络放到GPU上
-    net = RSnet.RSnet().to(device)
+    net = CHNet.CHNet().to(device)
     # 交叉熵损失函数
     criterion = nn.CrossEntropyLoss()
     # 初始化优化器
@@ -201,6 +201,7 @@ def train(train_loader, epochs):
             total_loss += loss.item()
         print('[Epoch: %d]   [loss avg: %.4f]   [current loss: %.4f]' % (epoch + 1, total_loss / (epoch + 1), loss.item()))
     print('Finished Training')
+    # net.load_state_dict(torch.load('/home/xyn/Documents/CHNet/cls_model/Augsburgs.pth'))
     return net, device
 
 def test(device, net, test_loader):
